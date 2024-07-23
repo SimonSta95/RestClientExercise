@@ -1,37 +1,27 @@
-package org.spring.restclientexercise;
+package org.spring.restclientexercise.Species;
 
 import org.spring.restclientexercise.api.model.ApiResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
-import java.util.List;
-
-
 @Service
-public class CharacterService {
+public class SpeciesService {
 
     private final RestClient restClient;
 
-    public CharacterService() {
+    public SpeciesService() {
         restClient = RestClient.builder()
                 .baseUrl("https://rickandmortyapi.com/api")
                 .build();
     }
 
-    public List<Character> loadAllCharacters() {
+    public int getSpeciesAlive(String speciesName) {
+
         ApiResponse response = restClient.get()
-                .uri("/character")
+                .uri("/character?status=alive&species=" + speciesName)
                 .retrieve()
                 .body(ApiResponse.class);
 
-        return response.results();
-    }
-
-    public Character loadCharacterById(int id){
-         return restClient.get()
-                 .uri("/character/" + id)
-                .retrieve()
-                .body(Character.class);
-
+        return response.info().count();
     }
 }
