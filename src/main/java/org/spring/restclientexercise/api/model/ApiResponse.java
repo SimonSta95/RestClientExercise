@@ -1,6 +1,6 @@
 package org.spring.restclientexercise.api.model;
 
-import org.spring.restclientexercise.Character;
+import org.spring.restclientexercise.Character.Character;
 
 import java.util.List;
 
