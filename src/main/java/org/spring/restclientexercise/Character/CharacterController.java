@@ -17,7 +17,7 @@ public class CharacterController {
     @GetMapping
     public List<Character> getAllCharacters(@RequestParam(required = false) String status) {
 
-        Map<String,String> params = new HashMap<>();
+        Map<String, String> params = new HashMap<>();
 
         if (status != null) {
             params.put("status", status);
@@ -27,7 +27,7 @@ public class CharacterController {
 
     @GetMapping("/{id}")
     public Character getCharacterById(@PathVariable int id) {
-        return  characterService.loadCharacterById(id);
+        return characterService.loadCharacterById(id);
     }
 
 }

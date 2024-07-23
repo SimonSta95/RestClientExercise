@@ -19,11 +19,11 @@ public class CharacterService {
                 .build();
     }
 
-    public List<Character> loadAllCharacters(Map<String,String> params) {
+    public List<Character> loadAllCharacters(Map<String, String> params) {
 
         String uri = "/character";
 
-        if (params.containsKey("status")){
+        if (params.containsKey("status")) {
             uri = uri + "?status=" + params.get("status");
         }
 
@@ -35,9 +35,9 @@ public class CharacterService {
         return response.results();
     }
 
-    public Character loadCharacterById(int id){
-         return restClient.get()
-                 .uri("/character/" + id)
+    public Character loadCharacterById(int id) {
+        return restClient.get()
+                .uri("/character/" + id)
                 .retrieve()
                 .body(Character.class);
     }
